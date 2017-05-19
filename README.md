@@ -55,7 +55,10 @@ npm install gulp-eslit --save-dev
 ```
 
 ```js
-require('gulp-eslit')(data, options);
+require('gulp-eslit')({
+  data: data, 
+  opts: options
+});
 ```
 
 - **data**: the data used by the template.
