@@ -63,7 +63,6 @@ require('gulp-eslit')(data, options);
   - **cwd**: the path used by imports (default: `process.cwd()`).
   - **prefixes**: the file prefixes sometimes used by imports (default: `[ "_" ]`).
   - **extensions**: the file extensions sometimes used by imports (default: `[ ".html", ".jsx" ]`).
-  - **separator**: the separator used to split paths (default: `/`).
   - **globopts**: the options passed into [node-glob].
 
 *Notes*:
@@ -71,10 +70,6 @@ require('gulp-eslit')(data, options);
 - *Paths are relative to the current file or the current working directory.*
 - *Paths may use glob patterns or omit prefixes and extensions*
 - *Node modules are supported, using the package `template` or `main` keys, or by using `index.html`*
-
-#### parse
-
-Parse returns a promise to render the template string once its embedded promises are resolved.
 
 ---
 
