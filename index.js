@@ -1,14 +1,16 @@
-// tooling
-const eslit = require('eslit');
-const gutil = require('gulp-util');
-const path = require('path');
-const through = require('through2');
+// internal tooling
+import path from 'path';
+
+// external tooling
+import eslit from 'eslit';
+import { PluginError } from 'gulp-util';
+import { obj as through2Obj } from 'through2';
 
 // gulp eslit
-module.exports = ({ data, opts } = {}) => through.obj(
+export default (data, opts) => through2Obj(
 	(file, enc, cb) => {
 		if (file.isStream()) {
-			throw new gutil.PluginError('gulp-eslit', 'Streaming not supported');
+			throw new PluginError('gulp-eslit', 'Streaming not supported');
 		} else if (file.isNull()) {
 			return cb(null, file);
 		}
@@ -26,7 +28,7 @@ module.exports = ({ data, opts } = {}) => through.obj(
 				return cb(null, file);
 			},
 			(error) => {
-				throw new gutil.PluginError('gulp-eslit', error);
+				throw new PluginError('gulp-eslit', error);
 			}
 		);
 	}

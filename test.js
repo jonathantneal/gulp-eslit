@@ -13,21 +13,21 @@ gulp.task(
 		'test/basic.html'
 	).pipe(
 		gulpESLit({
-			data: {
-				heading: Promise.resolve('Guest List'),
-				people: [{
-					given: 'Martin',
-					family: 'Brody'
-				}, {
-					given: 'Bruce',
-					family: 'Shark'
-				}]
-			}
+			heading: Promise.resolve('Guest List'),
+			people: [{
+				given: 'Martin',
+				family: 'Brody'
+			}, {
+				given: 'Bruce',
+				family: 'Shark'
+			}]
+		}, {
+			test: true
 		})
 	).pipe(
 		through.obj(
 			(file, enc, cb) => {
-				const result = file.contents.toString('utf-8')
+				const result = file.contents.toString('utf-8');
 
 				return expect === result
 				? cb(null, file)
